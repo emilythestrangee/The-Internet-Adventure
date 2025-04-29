@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased font-sans text-gray-100 bg-gray-900 overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-50 shadow-md;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-400;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-400;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-400;
+  }
+
+  .btn-disabled {
+    @apply bg-gray-600 text-gray-300 cursor-not-allowed hover:scale-100;
+  }
+
+  .card {
+    @apply bg-gray-800 rounded-xl shadow-md overflow-hidden;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-200 text-primary-900;
+  }
+
+  .badge-locked {
+    @apply bg-gray-700 text-gray-300;
+  }
+
+  .badge-success {
+    @apply bg-green-200 text-green-900;
+  }
+
+  .typed-cursor {
+    @apply text-current opacity-100;
+    animation: typedjsBlink 0.7s infinite;
+  }
+
+  @keyframes typedjsBlink {
+    50% {
+      opacity: 0.0;
+    }
+  }
+}
+

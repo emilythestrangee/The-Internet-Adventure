@@ -1,0 +1,97 @@
+
+/* Level transition animations */
+.level-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .level-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  .level-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .level-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  /* Globe animation */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .globe-rotate {
+    animation: rotate 60s linear infinite;
+  }
+  
+  /* XP progress bar animation */
+  @keyframes fillProgress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .xp-progress-animation {
+    animation: fillProgress 1s ease-out forwards;
+  }
+  
+  /* Badge unlock animation */
+  @keyframes badgeUnlock {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
+  .badge-unlock {
+    animation: badgeUnlock 0.7s ease-out forwards;
+  }
+  
+  /* Add your custom styles here for the UI */
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s;
+    cursor: pointer;
+  }
+  
+  .notification.notification-warning {
+    background-color: #f39c12;
+  }
+  
+  .notification.notification-success {
+    background-color: #2ecc71;
+  }
+  
+  .notification.notification-error {
+    background-color: #e74c3c;
+  }
+  

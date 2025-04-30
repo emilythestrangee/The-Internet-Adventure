@@ -1,20 +1,24 @@
 
-
 import React, { useState } from 'react';
 import { sendConfirmationEmail } from '../services/emailService'; // Import the email sending service
 
 // Validate Email (Arabic or English letters, numbers, hyphens allowed before @)
 const validateEmail = (email: string): boolean => {
-    // Allow Arabic (U+0600–U+06FF), English letters, digits, hyphens before @ and valid domain
-    const emailRegex = /^[\u0600-\u06FFa-zA-Z0-9\-]+(\.[\u0600-\u06FFa-zA-Z0-9\-]+)*@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
+  const emailRegex = /^[\u0600-\u06FF\u0660-\u0669a-zA-Z0-9\-\.]+@[\u0600-\u06FF\u0660-\u0669a-zA-Z0-9\-\.]+\.[\u0600-\u06FFa-zA-Z]{2,}$/;
+  return emailRegex.test(email);
 };
 
 // Validate domain name according to IDNA2008 rules (though we already check in regex above)
 const validateDomain = (domain: string): boolean => {
-    const domainRegex = /^([\u0600-\u06FFa-zA-Z0-9\-]+\.)+[\u0600-\u06FFa-zA-Z]{2,}$/;
-    return domainRegex.test(domain);
+  const domainRegex = /^([\u0600-\u06FF\u0660-\u0669a-zA-Z0-9\-]+\.)+[\u0600-\u06FFa-zA-Z]{2,}$/;
+  return domainRegex.test(domain);
 };
+
+const isArabic = (text: string): boolean => {
+  const arabicRegex = /[\u0600-\u06FF]/;
+  return arabicRegex.test(text);
+};
+
 
 const Email: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -36,7 +40,7 @@ const Email: React.FC = () => {
       return;
     }
 
-    const [localPart, domain] = email.split('@');
+    const [, domain] = email.split('@');
     if (!validateDomain(domain)) {
       setError('يرجى إدخال نطاق صحيح.');
       setLoading(false);
@@ -62,12 +66,14 @@ const Email: React.FC = () => {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
-            type="email"
+            // type="email"
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            dir={isArabic(email) ? 'rtl' : 'ltr'}
+            className={`w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 ${isArabic(email) ? 'text-right' : 'text-left'
+              }`}
           />
           <button
             type="submit"

@@ -41,7 +41,6 @@ A modern, responsive web platform designed to promote **Universal Acceptance (UA
 - **Frontend**: React + Vite + TailwindCSS
 - **Backend**: Firebase Firestore
 - **Email**: EmailJS
-- **Hosting**: Vercel
 
 ## 🧠 Learn More About Universal Acceptance (UA)
 

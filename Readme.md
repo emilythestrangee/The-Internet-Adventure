@@ -1,6 +1,6 @@
 # 🌐 Universal Acceptance Awareness Website
 
-A modern, responsive web platform designed to promote **Universal Acceptance (UA)**, especially for **Arabic domain names and email addresses**. Built with **React (Vite)**, hosted on **Vercel**, and powered by **Firebase** and **EmailJS**.
+A modern, responsive web platform designed to promote **Universal Acceptance (UA)**, especially for **Arabic domain names and email addresses**. Built with **React (Vite)** and powered by **Firebase** and **EmailJS**.
 
 ## ✨ Features
 
